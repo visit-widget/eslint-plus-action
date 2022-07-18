@@ -73,7 +73,8 @@ export async function downloadArtifacts(
     ? filter(artifacts.data.artifacts)
     : artifacts.data.artifacts;
 
-  if (filtered.length === 0) {
+  const withoutExpired = filtered.filter((a) => !a.expired);
+  if (withoutExpired.length === 0) {
     return [];
   }
 
